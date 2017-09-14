@@ -26,8 +26,21 @@ add_executable (lectureImage
   main.cpp
 )
 
+add_executable (seuilGris
+  seuilGris.cpp
+)
+
+add_executable (sobel
+  sobel.cpp
+)
 
 target_link_libraries (lectureImage
+  ${OpenCV_LIBS}
+)
+target_link_libraries (seuilGris
+  ${OpenCV_LIBS}
+)
+target_link_libraries (sobel
   ${OpenCV_LIBS}
 )
 
