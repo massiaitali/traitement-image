@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tp-home009/maital2/Documents/TP_Polytech/Traitement_image/tp1/sobel.cpp" "/home/tp-home009/maital2/Documents/TP_Polytech/Traitement_image/tp1/CMakeFiles/sobel.dir/sobel.cpp.o"
+  "/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/sobel.cpp" "/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/sobel.dir/sobel.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
-  "PROJECT_DIRECTORY=\"/home/tp-home009/maital2/Documents/TP_Polytech/Traitement_image/tp1\""
+  "PROJECT_DIRECTORY=\"/Users/carolineeche/Desktop/Massi/Traitement_image/tp1\""
   )
 
 # The include file search paths:

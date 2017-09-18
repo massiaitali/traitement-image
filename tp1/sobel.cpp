@@ -20,9 +20,10 @@ int main(int argc, char** argv){
   	}
 
 
-  	Sobel(imageIn, imageOut, CV_8U, 1, 1, 1, 1, 0, BORDER_DEFAULT);
+  	Sobel(imageIn, imageOut, CV_8U, 1, 1, 3, 1, 0, BORDER_DEFAULT);
 
 	imwrite(argv[2], imageOut); // Ecriture de l'image avec le chemin fourni 
+
 
 	return 0;
 }

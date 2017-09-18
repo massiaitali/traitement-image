@@ -1,5 +1,6 @@
-/home/tp-home009/maital2/Documents/TP_Polytech/Traitement_image/tp1/CMakeFiles/edit_cache.dir
-/home/tp-home009/maital2/Documents/TP_Polytech/Traitement_image/tp1/CMakeFiles/lectureImage.dir
-/home/tp-home009/maital2/Documents/TP_Polytech/Traitement_image/tp1/CMakeFiles/seuilGris.dir
-/home/tp-home009/maital2/Documents/TP_Polytech/Traitement_image/tp1/CMakeFiles/sobel.dir
-/home/tp-home009/maital2/Documents/TP_Polytech/Traitement_image/tp1/CMakeFiles/rebuild_cache.dir
+/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/edit_cache.dir
+/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/evaluation.dir
+/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/sobel.dir
+/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/rebuild_cache.dir
+/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/seuilGris.dir
+/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/lectureImage.dir
