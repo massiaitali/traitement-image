@@ -51,13 +51,9 @@ int main(int argc, char** argv){
   double p = (double)TP / (TP + FP);  		
 	double r = (double)TP / (TP + FN);
 	
-  cout << 
-	"(p,r) = (" <<
-	p << 
-	", " << 
-	r << 
-	")" <<
-	std::endl;
+  cout << p << std::endl;
+  cout << r << std::endl;
+	
 
 	return 0;
 }
