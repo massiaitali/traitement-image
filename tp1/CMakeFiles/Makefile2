@@ -60,6 +60,43 @@ CMAKE_SOURCE_DIR = /Users/carolineeche/Desktop/Massi/Traitement_image/tp1
 CMAKE_BINARY_DIR = /Users/carolineeche/Desktop/Massi/Traitement_image/tp1
 
 #=============================================================================
+# Target rules for target CMakeFiles/traitement.dir
+
+# All Build rule for target.
+CMakeFiles/traitement.dir/all:
+	$(MAKE) -f CMakeFiles/traitement.dir/build.make CMakeFiles/traitement.dir/depend
+	$(MAKE) -f CMakeFiles/traitement.dir/build.make CMakeFiles/traitement.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles --progress-num=9,10 "Built target traitement"
+.PHONY : CMakeFiles/traitement.dir/all
+
+# Include target in all.
+all: CMakeFiles/traitement.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/traitement.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/traitement.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles 0
+.PHONY : CMakeFiles/traitement.dir/rule
+
+# Convenience name for target.
+traitement: CMakeFiles/traitement.dir/rule
+
+.PHONY : traitement
+
+# clean rule for target.
+CMakeFiles/traitement.dir/clean:
+	$(MAKE) -f CMakeFiles/traitement.dir/build.make CMakeFiles/traitement.dir/clean
+.PHONY : CMakeFiles/traitement.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/traitement.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/evaluation.dir
 
 # All Build rule for target.

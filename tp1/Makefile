@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named traitement
+
+# Build rule for target.
+traitement: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 traitement
+.PHONY : traitement
+
+# fast build rule for target.
+traitement/fast:
+	$(MAKE) -f CMakeFiles/traitement.dir/build.make CMakeFiles/traitement.dir/build
+.PHONY : traitement/fast
+
+#=============================================================================
 # Target rules for targets named evaluation
 
 # Build rule for target.
@@ -270,6 +283,33 @@ sobel.cpp.s:
 	$(MAKE) -f CMakeFiles/sobel.dir/build.make CMakeFiles/sobel.dir/sobel.cpp.s
 .PHONY : sobel.cpp.s
 
+traitement.o: traitement.cpp.o
+
+.PHONY : traitement.o
+
+# target to build an object file
+traitement.cpp.o:
+	$(MAKE) -f CMakeFiles/traitement.dir/build.make CMakeFiles/traitement.dir/traitement.cpp.o
+.PHONY : traitement.cpp.o
+
+traitement.i: traitement.cpp.i
+
+.PHONY : traitement.i
+
+# target to preprocess a source file
+traitement.cpp.i:
+	$(MAKE) -f CMakeFiles/traitement.dir/build.make CMakeFiles/traitement.dir/traitement.cpp.i
+.PHONY : traitement.cpp.i
+
+traitement.s: traitement.cpp.s
+
+.PHONY : traitement.s
+
+# target to generate assembly for a file
+traitement.cpp.s:
+	$(MAKE) -f CMakeFiles/traitement.dir/build.make CMakeFiles/traitement.dir/traitement.cpp.s
+.PHONY : traitement.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -277,6 +317,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... traitement"
 	@echo "... evaluation"
 	@echo "... sobel"
 	@echo "... rebuild_cache"
@@ -294,6 +335,9 @@ help:
 	@echo "... sobel.o"
 	@echo "... sobel.i"
 	@echo "... sobel.s"
+	@echo "... traitement.o"
+	@echo "... traitement.i"
+	@echo "... traitement.s"
 .PHONY : help
 
 

@@ -38,6 +38,10 @@ add_executable (evaluation
   evaluation.cpp
 )
 
+add_executable (traitement
+  traitement.cpp
+)
+
 target_link_libraries (lectureImage
   ${OpenCV_LIBS}
 )
@@ -48,5 +52,8 @@ target_link_libraries (sobel
   ${OpenCV_LIBS}
 )
 target_link_libraries (evaluation
+  ${OpenCV_LIBS}
+)
+target_link_libraries (traitement
   ${OpenCV_LIBS}
 )

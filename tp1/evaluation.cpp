@@ -47,10 +47,11 @@ int main(int argc, char** argv){
   		
   	}
   }
-  cout << "TP = " << TP << " FP = " << FP << " FN = " << FN << std::endl;
+  // cout << "TP = " << TP << " FP = " << FP << " FN = " << FN << std::endl;
   double p = (double)TP / (TP + FP);  		
 	double r = (double)TP / (TP + FN);
-	cout << 
+	
+  cout << 
 	"(p,r) = (" <<
 	p << 
 	", " << 
