@@ -11,7 +11,7 @@ int main(int argc, char** argv){
 
 
 	Mat imageIn = imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE ); // Entrer de l'image et sauvegarde dans une matrice
-	Mat imageOut = Mat(); // Initialisation de la matrice de sortie
+	Mat imageOut = Mat(), imageGradX , imageGradY , imageGradX_abs, imageGradY_abs; // Initialisation de la matrice de sortie
 	
 	if(! imageIn.data ) // Check for invalid input
   	{
@@ -19,8 +19,15 @@ int main(int argc, char** argv){
 		return -1;
   	}
 
+  	// X
+  	Sobel(imageIn, imageGradX, CV_8U, 1, 0, 3, 1, 0, BORDER_DEFAULT);
+  	convertScaleAbs( imageGradX, imageGradX_abs );
+  	//Y
+  	Sobel(imageIn, imageGradY, CV_8U, 0, 1, 3, 1, 0, BORDER_DEFAULT);
+  	convertScaleAbs( imageGradY, imageGradY_abs );
 
-  	Sobel(imageIn, imageOut, CV_8U, 1, 1, 3, 1, 0, BORDER_DEFAULT);
+  	addWeighted( imageGradX_abs, 0.5, imageGradY_abs, 0.5, 0, imageOut );
+
 
 	imwrite(argv[2], imageOut); // Ecriture de l'image avec le chemin fourni 
 
