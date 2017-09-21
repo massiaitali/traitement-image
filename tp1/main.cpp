@@ -21,7 +21,7 @@ int main(int argc, char** argv){
 	
 	if(! imageIn.data )                              // Check for invalid input
     	{
-        	cout <<  "Could not open or find the image" << std::endl ;
+        	cout <<  "Could not open or find the image" << endl ;
         	return -1;
    	}
 	

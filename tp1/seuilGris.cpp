@@ -15,7 +15,7 @@ int main(int argc, char** argv){
 	
 	if(! imageIn.data ) // Check for invalid input
   {
-      cout <<  "Could not open or find the image" << std::endl ;
+      cout <<  "Could not open or find the image" << endl ;
       return -1;
   }
 
@@ -30,7 +30,7 @@ int main(int argc, char** argv){
   }
 	else // Message d'erreur pour le seuil 
   {
-    cout << "La valeur de seuil doit etre comprise entre 0 et 255" << std::endl;
+    cout << "La valeur de seuil doit etre comprise entre 0 et 255" << endl;
   }
 
 	return 0;

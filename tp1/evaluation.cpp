@@ -15,7 +15,7 @@ int main(int argc, char** argv){
 	
 	if(! imageInVT.data | ! imageInBin.data ) // Check for invalid input
   	{
-		cout <<  "Could not open or find the image" << std::endl ;
+		cout <<  "Could not open or find the image" << endl ;
 		return -1;
   	}
 	int TP = 0, FP = 0, FN = 0;
@@ -23,14 +23,14 @@ int main(int argc, char** argv){
   {
   	for (int j = 0; j < imageInBin.cols ; ++j)
   	{
-  		if ((int)imageInVT.at<uchar>(i, j) > 125 && (int)imageInBin.at<uchar>(i, j) > 125)
+  		if ((int)imageInVT.at<uchar>(i, j) > 127 && (int)imageInBin.at<uchar>(i, j) > 127)
   		{
   			TP++;
   		}
-  		else if((int)imageInVT.at<uchar>(i, j) > 125 && (int)imageInBin.at<uchar>(i, j) <= 125){
+  		else if((int)imageInVT.at<uchar>(i, j) <= 127 && (int)imageInBin.at<uchar>(i, j) > 127){
   			FN++;
   		}
-  		else if((int)imageInVT.at<uchar>(i, j) <= 125 && (int)imageInBin.at<uchar>(i, j) > 125){
+  		else if((int)imageInVT.at<uchar>(i, j) > 127 && (int)imageInBin.at<uchar>(i, j) <= 127){
   			FP++;
   		}
 
@@ -39,20 +39,20 @@ int main(int argc, char** argv){
   		// cout << "Image verite terrain pixel( " <<
   		// i << ", " << j << ") = " <<
   		// (int)imageInVT.at<uchar>(i, j) << 
-  		// std::endl;
+  		// endl;
   		// cout << "Image resultat bin pixel( " <<
   		// i << ", " << j << ") = " <<
   		// (int)imageInBin.at<uchar>(i, j) << 
-  		// std::endl;
+  		// endl;
   		
   	}
   }
-  // cout << "TP = " << TP << " FP = " << FP << " FN = " << FN << std::endl;
+  // cout << "TP = " << TP << " FP = " << FP << " FN = " << FN << endl;
   double p = (double)TP / (TP + FP);  		
 	double r = (double)TP / (TP + FN);
 	
-  cout << p << std::endl;
-  cout << r << std::endl;
+  cout << p << endl;
+  cout << r << endl;
 	
 
 	return 0;
