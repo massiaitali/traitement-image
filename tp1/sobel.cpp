@@ -19,15 +19,15 @@ int main(int argc, char** argv){
 		return -1;
   	}
   	// X
-  	Sobel(imageIn, imageGradX, CV_8U, 1, 0, 3, 1, 0, BORDER_DEFAULT);
+  	Sobel(imageIn, imageGradX, CV_8U, 1, 0, 3, 1, 0, BORDER_DEFAULT); // Sobel sur X
   	convertScaleAbs( imageGradX, imageGradX_abs );
   	//Y
-  	Sobel(imageIn, imageGradY, CV_8U, 0, 1, 3, 1, 0, BORDER_DEFAULT);
+  	Sobel(imageIn, imageGradY, CV_8U, 0, 1, 3, 1, 0, BORDER_DEFAULT);// Sobel sur Y
   	convertScaleAbs( imageGradY, imageGradY_abs );
     //Gradient
-  	addWeighted( imageGradX_abs, 0.5, imageGradY_abs, 0.5, 0, imageOut );
+  	addWeighted( imageGradX_abs, 0.5, imageGradY_abs, 0.5, 0, imageOut ); //Melange des deux matrices
 
-    threshold(imageOut, imageOut, 50, 255, THRESH_BINARY_INV); // Application du seuil sur la matrice
+    threshold(imageOut, imageOut, 50, 255, THRESH_BINARY_INV); // Application du seuil sur la matrice pour passer en image binaire
 
 	imwrite(argv[2], imageOut); // Ecriture de l'image avec le chemin fourni 
 

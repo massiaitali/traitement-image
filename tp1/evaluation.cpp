@@ -18,11 +18,12 @@ int main(int argc, char** argv){
 		cout <<  "Could not open or find the image" << endl ;
 		return -1;
   	}
-	int TP = 0, FP = 0, FN = 0;
+	int TP = 0, FP = 0, FN = 0; // Initialisation des variables de calculs
   for (int i = 0; i < imageInBin.rows ; ++i)
   {
   	for (int j = 0; j < imageInBin.cols ; ++j)
   	{
+      // Incrémentation des variables de calcul
   		if ((int)imageInVT.at<uchar>(i, j) > 127 && (int)imageInBin.at<uchar>(i, j) > 127)
   		{
   			TP++;
@@ -47,6 +48,7 @@ int main(int argc, char** argv){
   		
   	}
   }
+  // Calcul de p et r
   // cout << "TP = " << TP << " FP = " << FP << " FN = " << FN << endl;
   double p = (double)TP / (TP + FP);  		
 	double r = (double)TP / (TP + FN);
