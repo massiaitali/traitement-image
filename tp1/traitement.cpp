@@ -25,15 +25,11 @@ int main(int argc, char** argv){
   }
   //Filtre gaussien
   GaussianBlur(imageIn, imageGauss, Size(5,5), 0, 0);
-  //GaussianBlur(imageOut, imageOut, Size(3,3), 0, 1);
 	//X
 	Sobel(imageGauss, imageGradX, CV_32F, 1, 0, 3, 1, 0, BORDER_DEFAULT);
-	//convertScaleAbs( imageGradX, imageGradX_abs );
 	//Y
 	Sobel(imageGauss, imageGradY, CV_32F, 0, 1, 3, 1, 0, BORDER_DEFAULT);
-	//convertScaleAbs( imageGradY, imageGradY_abs );
   //Gradient
-	//addWeighted( imageGradX_abs, 0.5, imageGradY_abs, 0.5, 0, imageOut );
 	float max = 0.;
 	for (int i = 0; i < imageMagnitude.rows; ++i)
 	 {
@@ -50,12 +46,11 @@ int main(int argc, char** argv){
 	std::cout << max << std::endl;
 
 	//Seuil gris
-	//threshold(imageMagnitude, imageOut, max/4, 255, THRESH_BINARY_INV); // Application du seuil sur la matrice
 	for (int i = 0; i < imageMagnitude.rows; ++i)
 		 {
 			for (int j = 0; j < imageMagnitude.cols; ++j)
 			{
-				if (imageMagnitude.at<float>(i,j) > max/2)
+				if (imageMagnitude.at<float>(i,j) > (max)/3)
 				{
 					imageOut.at<uchar>(i,j) = 255;
 				}

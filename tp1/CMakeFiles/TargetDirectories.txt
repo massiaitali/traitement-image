@@ -1,7 +1,0 @@
-/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/edit_cache.dir
-/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/traitement.dir
-/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/evaluation.dir
-/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/sobel.dir
-/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/rebuild_cache.dir
-/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/seuilGris.dir
-/Users/carolineeche/Desktop/Massi/Traitement_image/tp1/CMakeFiles/lectureImage.dir
