@@ -7,7 +7,7 @@
 // Var fixés
 #define Seuil_Maximum 255
 #define NombreColonnes 100
-#define MaximumRad 100 
+#define Maximumz 100 
 #define NombreLignes 100
 
 using namespace std;
@@ -21,12 +21,12 @@ cv::Point3d Max_accu(vector<vector<vector<int> > > array3d) {
 		
 	for(int i=0; i<NombreLignes; i++){
 		for(int j=0; j<NombreColonnes; j++){
-			for(int k=0; k<MaximumRad; k++){
+			for(int k=0; k<Maximumz; k++){
 				ValeurAct = array3d[i][j][k];
 				if(ValeurAct >= maximum){
-					LocValMax.x = j;
 					LocValMax.y = i;
 					LocValMax.z = k;
+					LocValMax.x = j;
 					maximum = ValeurAct;
 				}
 			}
@@ -42,9 +42,7 @@ int main(int argc, char** argv){
 
 	int seuil = atoi(argv[1]);
 	
-	Mat imageOut, imageOutCopie;
-	Mat abs_imageOut_x, abs_imageOut_y;
-	Mat imageOut_x, imageOut_y;
+	Mat imageOut_x, imageOut_y, abs_imageOut_x, abs_imageOut_y,imageOut, imageOutCopie;
 	Mat imageIn = imread( argv[2], CV_LOAD_IMAGE_GRAYSCALE );
 		
 	int echel = 1;
@@ -53,13 +51,13 @@ int main(int argc, char** argv){
 
    	GaussianBlur( imageIn, imageIn, Size(3,3), 0, 0, BORDER_DEFAULT );
 	//Sobel 
-	//Grad en Y
+	//Gz en Y
 	Sobel( imageIn, imageOut_y, prof, 0, 1, 3, echel, delt, BORDER_DEFAULT );
 	convertScaleAbs( imageOut_y, abs_imageOut_y );
-	//Grad en X
+	//Gz en X
  	Sobel( imageIn, imageOut_x, prof, 1, 0, 3, echel, delt, BORDER_DEFAULT );
 	convertScaleAbs( imageOut_x, abs_imageOut_x );
-	// Grad approxi
+	// Gz approxi
 	addWeighted( abs_imageOut_x, 0.5, abs_imageOut_y, 0.5, 0, imageOut );
 	//Seuil gris
 	for (int i = 0; i < imageOut.rows; ++i)
@@ -84,31 +82,27 @@ int main(int argc, char** argv){
 		Accu[i].resize(NombreColonnes);
 		for (int j = 0; j < NombreColonnes; ++j)
 		{  
-			Accu[i][j].resize(MaximumRad);
+			Accu[i][j].resize(Maximumz);
 		}
 	}
-	for(int r=0; r<NombreLignes; r++){
-		for(int c=0; c<NombreColonnes; c++){
-			for(int rad=0; rad<MaximumRad; rad++){
-				Accu[r][c][rad] = 0;		  
+	for(int w=0; w<NombreLignes; w++){
+		for(int z=0; z<NombreColonnes; z++){
+			for(int r=0; r<Maximumz; r++){
+				Accu[w][z][r] = 0;		  
 			} 
 		}
 	}
 	cout << "Initialisation de l'accu fin" << std::endl; 
 	// parcour pixel detecte si il y a un cercle pour increment l'accu
-	for(int x=0; x<NombreLignes; x++){
-		for(int y=0; y<NombreColonnes; y++){		
-			
-			//Si c'est un pixel de contour	
-			if(imageOut.at<uchar>(x,y)==255){
+	for(int i=0; i<NombreLignes; i++){
+		for(int j=0; j<NombreColonnes; j++){		
 				
-				//Pour toutes les lignes et colonnes possibles		
+			if(imageOut.at<uchar>(i,j)==255){	
 				for(int r=0; r<NombreLignes; r++){
-					for(int c=0; c<NombreColonnes; c++){
-						//Calcul du rayon
-						int rad = int(sqrt(pow((x-r),2) + pow((y-c),2)));
-						if(rad > 0 && rad < MaximumRad){						
-							(Accu[r][c][rad])++; //Si on trouve un cercle potentiel on vote pour ce cercle
+					for(int w=0; w<NombreColonnes; w++){
+						int z = int(sqrt(pow((i-r),2) + pow((j-w),2)));
+						if(z > 0 && z < Maximumz){						
+							(Accu[r][w][z])++; // Vote
 						}
 					}
 				}
@@ -123,20 +117,24 @@ int main(int argc, char** argv){
 	// Boucle dans l'accu	
 	  for(int r=0; r<NombreLignes; r++){
 		for(int c=0; c<NombreColonnes; c++){
-			for(int rad=0; rad<MaximumRad; rad++){
-				ValeurActuelle = Accu[r][c][rad];
-				if(ValeurActuelle>0 && r>0 && c>0 && rad>0 && r<NombreLignes-1 && c<NombreColonnes-1 && rad<MaximumRad-1){
+			for(int z=0; z<Maximumz; z++){
+				ValeurActuelle = Accu[r][c][z];
+				if(ValeurActuelle>0 && r>0 && c>0 
+				&& z>0 
+				&& r<NombreLignes-1 
+				&& c<NombreColonnes-1 
+				&& z<Maximumz-1){
 					for(int i=r-1; i<=r+1; i++){
 						for(int j=c-1; j<=c+1; j++){
-							for(int k=rad-1; k<=rad+1; k++){			
+							for(int k=z-1; k<=z+1; k++){			
 								if(ValeurActuelle < Accu[i][j][k]){
-									Accu[r][c][rad] = -1;
+									Accu[r][c][z] = -1;
 								}
 							}
 						}
 					}
 				}else{
-					Accu[r][c][rad] = -1;
+					Accu[r][c][z] = -1;
 				}
 			}
 		}
@@ -146,10 +144,8 @@ int main(int argc, char** argv){
 	cv::Point3d IndicesMaximum;	
 	for(int i=0; i<atoi(argv[4])+3; i++){	
 		IndicesMaximum = Max_accu(Accu);		
-		Accu[IndicesMaximum.x][IndicesMaximum.y][IndicesMaximum.z]=-1; //Il a deja ete reconnu on le met a -1	
-		//Dessiner le cercle
+		Accu[IndicesMaximum.x][IndicesMaximum.y][IndicesMaximum.z]=-1; 
 		circle( imageOut, Point(IndicesMaximum.x,IndicesMaximum.y), 1, Scalar( 255, 255, 255 ), 2, 8, 0);
-		//Dessiner son centre
 		circle( imageOut, Point(IndicesMaximum.x,IndicesMaximum.y), IndicesMaximum.z, Scalar( 255, 255, 255 ), 2, 8, 0);	
 	}
 	imwrite(argv[3], imageOut);
